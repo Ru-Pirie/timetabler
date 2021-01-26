@@ -80,249 +80,249 @@ module.exports = async (client, message) => {
 	const optionDFilter = (reaction, user) => {
 		return ['🎨', '🤝', '🖥️', '🌍', '📰', '🙏', '🥳'].includes(reaction.emoji.name) && user.id === message.author.id;
 	};
-	function optionA() {
+	async function optionA() {
 		const msg = await message.channel.send(optionAEmbed);
-			await msg.react('🏛️');
-			await msg.react('👨‍💼');
-			await msg.react('🌍');
-			await msg.react('🗿');
-			await msg.react('🎭');
-			await msg.react('📸');
-			await msg.react('🎵');
-			await msg.react('🤝');
-			await msg.react('🥳');
-			msg.awaitReactions(optionAFilter, { max: 1, time: 600000, errors: ['time'] })
-				.then(collected => {
-					successEmbed.setTitle('Success: Added Option A');
-					const reaction = collected.first();
-					if (reaction.emoji.name === '🏛️') {
-						addOptionA('History', message.author.id);
-						successEmbed.setDescription('I set your option A to History, this will be what apears when you have option A on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '👨‍💼') {
-						addOptionA('ASDAN', message.author.id);
-						successEmbed.setDescription('I set your option A to ASDAN, this will be what apears when you have option A on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🌍') {
-						addOptionA('Geography', message.author.id);
-						successEmbed.setDescription('I set your option A to Geography, this will be what apears when you have option A on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🗿') {
-						addOptionA('3D Design', message.author.id);
-						successEmbed.setDescription('I set your option A to 3D Design, this will be what apears when you have option A on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🎭') {
-						addOptionA('Drama', message.author.id);
-						successEmbed.setDescription('I set your option A to Drama, this will be what apears when you have option A on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '📸') {
-						addOptionA('Photography', message.author.id);
-						successEmbed.setDescription('I set your option A to Photography, this will be what apears when you have option A on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🎵') {
-						addOptionA('Music', message.author.id);
-						successEmbed.setDescription('I set your option A to Music, this will be what apears when you have option A on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🤝') {
-						addOptionA('Study Support', message.author.id);
-						successEmbed.setDescription('I set your option A to Study Support, this will be what apears when you have option A on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🥳') {
-						addOptionA('Free Lesson', message.author.id);
-						successEmbed.setDescription('I set your option A to Free Lesson, this will be what apears when you have option A on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					optionB()
-				})
-				.catch(async () => {
-					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
-					await msg.delete();
-				});
+		await msg.react('🏛️');
+		await msg.react('👨‍💼');
+		await msg.react('🌍');
+		await msg.react('🗿');
+		await msg.react('🎭');
+		await msg.react('📸');
+		await msg.react('🎵');
+		await msg.react('🤝');
+		await msg.react('🥳');
+		msg.awaitReactions(optionAFilter, { max: 1, time: 600000, errors: ['time'] })
+			.then(collected => {
+				successEmbed.setTitle('Success: Added Option A');
+				const reaction = collected.first();
+				if (reaction.emoji.name === '🏛️') {
+					addOptionA('History', message.author.id);
+					successEmbed.setDescription('I set your option A to History, this will be what apears when you have option A on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '👨‍💼') {
+					addOptionA('ASDAN', message.author.id);
+					successEmbed.setDescription('I set your option A to ASDAN, this will be what apears when you have option A on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🌍') {
+					addOptionA('Geography', message.author.id);
+					successEmbed.setDescription('I set your option A to Geography, this will be what apears when you have option A on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🗿') {
+					addOptionA('3D Design', message.author.id);
+					successEmbed.setDescription('I set your option A to 3D Design, this will be what apears when you have option A on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🎭') {
+					addOptionA('Drama', message.author.id);
+					successEmbed.setDescription('I set your option A to Drama, this will be what apears when you have option A on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '📸') {
+					addOptionA('Photography', message.author.id);
+					successEmbed.setDescription('I set your option A to Photography, this will be what apears when you have option A on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🎵') {
+					addOptionA('Music', message.author.id);
+					successEmbed.setDescription('I set your option A to Music, this will be what apears when you have option A on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🤝') {
+					addOptionA('Study Support', message.author.id);
+					successEmbed.setDescription('I set your option A to Study Support, this will be what apears when you have option A on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🥳') {
+					addOptionA('Free Lesson', message.author.id);
+					successEmbed.setDescription('I set your option A to Free Lesson, this will be what apears when you have option A on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				optionB();
+			})
+			.catch(async () => {
+				msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
+				await msg.delete();
+			});
 	}
-	function optionB() {
+	async function optionB() {
 		const msg = await message.channel.send(optionBEmbed);
-			await msg.react('🚸');
-			await msg.react('🇲🇫');
-			await msg.react('🤝');
-			await msg.react('🇩🇪');
-			await msg.react('📰');
-			await msg.react('⚽');
-			await msg.react('🗿');
-			await msg.react('🇪🇸');
-			await msg.react('🥳');
-			msg.awaitReactions(optionBFilter, { max: 1, time: 600000, errors: ['time'] })
-				.then(collected => {
-					successEmbed.setTitle('Success: Added Option B');
-					const reaction = collected.first();
-					if (reaction.emoji.name === '🚸') {
-						addOptionB('Child Development', message.author.id);
-						successEmbed.setDescription('I set your option B to Child Development, this will be what apears when you have option B on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🇲🇫') {
-						addOptionB('French', message.author.id);
-						successEmbed.setDescription('I set your option B to French, this will be what apears when you have option B on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🤝') {
-						addOptionB('Study Support', message.author.id);
-						successEmbed.setDescription('I set your option B to Study Support, this will be what apears when you have option B on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '📰') {
-						addOptionB('Media', message.author.id);
-						successEmbed.setDescription('I set your option B to Media, this will be what apears when you have option B on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '⚽') {
-						addOptionB('PE', message.author.id);
-						successEmbed.setDescription('I set your option B to PE, this will be what apears when you have option B on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🗿') {
-						addOptionB('3D Design', message.author.id);
-						successEmbed.setDescription('I set your option B to 3D Design, this will be what apears when you have option B on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🇪🇸') {
-						addOptionB('Spanish', message.author.id);
-						successEmbed.setDescription('I set your option B to Spanish, this will be what apears when you have option B on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🇩🇪') {
-						addOptionB('German', message.author.id);
-						successEmbed.setDescription('I set your option B to German, this will be what apears when you have option B on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🥳') {
-						addOptionB('Free Lesson', message.author.id);
-						successEmbed.setDescription('I set your option B to Free Lesson, this will be what apears when you have option B on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					optionC()
-				})
-				.catch(async () => {
-					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
-					await msg.delete();
-				});
+		await msg.react('🚸');
+		await msg.react('🇲🇫');
+		await msg.react('🤝');
+		await msg.react('🇩🇪');
+		await msg.react('📰');
+		await msg.react('⚽');
+		await msg.react('🗿');
+		await msg.react('🇪🇸');
+		await msg.react('🥳');
+		msg.awaitReactions(optionBFilter, { max: 1, time: 600000, errors: ['time'] })
+			.then(collected => {
+				successEmbed.setTitle('Success: Added Option B');
+				const reaction = collected.first();
+				if (reaction.emoji.name === '🚸') {
+					addOptionB('Child Development', message.author.id);
+					successEmbed.setDescription('I set your option B to Child Development, this will be what apears when you have option B on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🇲🇫') {
+					addOptionB('French', message.author.id);
+					successEmbed.setDescription('I set your option B to French, this will be what apears when you have option B on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🤝') {
+					addOptionB('Study Support', message.author.id);
+					successEmbed.setDescription('I set your option B to Study Support, this will be what apears when you have option B on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '📰') {
+					addOptionB('Media', message.author.id);
+					successEmbed.setDescription('I set your option B to Media, this will be what apears when you have option B on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '⚽') {
+					addOptionB('PE', message.author.id);
+					successEmbed.setDescription('I set your option B to PE, this will be what apears when you have option B on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🗿') {
+					addOptionB('3D Design', message.author.id);
+					successEmbed.setDescription('I set your option B to 3D Design, this will be what apears when you have option B on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🇪🇸') {
+					addOptionB('Spanish', message.author.id);
+					successEmbed.setDescription('I set your option B to Spanish, this will be what apears when you have option B on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🇩🇪') {
+					addOptionB('German', message.author.id);
+					successEmbed.setDescription('I set your option B to German, this will be what apears when you have option B on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🥳') {
+					addOptionB('Free Lesson', message.author.id);
+					successEmbed.setDescription('I set your option B to Free Lesson, this will be what apears when you have option B on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				optionC();
+			})
+			.catch(async () => {
+				msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
+				await msg.delete();
+			});
 	}
-	function optionC() {
+	async function optionC() {
 		const msg = await message.channel.send(optionCEmbed);
-			await msg.react('🖥️');
-			await msg.react('🏛️');
-			await msg.react('🌍');
-			await msg.react('🇩🇪');
-			await msg.react('🇪🇸');
-			await msg.react('🥘');
-			await msg.react('🥳');
-			msg.awaitReactions(optionCFilter, { max: 1, time: 600000, errors: ['time'] })
-				.then(collected => {
-					successEmbed.setTitle('Success: Added Option C');
-					const reaction = collected.first();
-					if (reaction.emoji.name === '🖥️') {
-						addOptionC('Computing', message.author.id);
-						successEmbed.setDescription('I set your option C to Computing, this will be what apears when you have option C on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🏛️') {
-						addOptionC('History', message.author.id);
-						successEmbed.setDescription('I set your option C to History, this will be what apears when you have option C on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🌍') {
-						addOptionC('Geography', message.author.id);
-						successEmbed.setDescription('I set your option C to Geography, this will be what apears when you have option C on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🇩🇪') {
-						addOptionC('German', message.author.id);
-						successEmbed.setDescription('I set your option C to German, this will be what apears when you have option C on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🇪🇸') {
-						addOptionC('Spanish', message.author.id);
-						successEmbed.setDescription('I set your option C to Spanish, this will be what apears when you have option C on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🥘') {
-						addOptionC('Food Tech', message.author.id);
-						successEmbed.setDescription('I set your option C to Food Tech, this will be what apears when you have option C on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🥳') {
-						addOptionC('Free Lesson', message.author.id);
-						successEmbed.setDescription('I set your option C to Free Lesson, this will be what apears when you have option C on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-				})
-				.catch(async () => {
-					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
-					await msg.delete();
-				});
+		await msg.react('🖥️');
+		await msg.react('🏛️');
+		await msg.react('🌍');
+		await msg.react('🇩🇪');
+		await msg.react('🇪🇸');
+		await msg.react('🥘');
+		await msg.react('🥳');
+		msg.awaitReactions(optionCFilter, { max: 1, time: 600000, errors: ['time'] })
+			.then(collected => {
+				successEmbed.setTitle('Success: Added Option C');
+				const reaction = collected.first();
+				if (reaction.emoji.name === '🖥️') {
+					addOptionC('Computing', message.author.id);
+					successEmbed.setDescription('I set your option C to Computing, this will be what apears when you have option C on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🏛️') {
+					addOptionC('History', message.author.id);
+					successEmbed.setDescription('I set your option C to History, this will be what apears when you have option C on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🌍') {
+					addOptionC('Geography', message.author.id);
+					successEmbed.setDescription('I set your option C to Geography, this will be what apears when you have option C on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🇩🇪') {
+					addOptionC('German', message.author.id);
+					successEmbed.setDescription('I set your option C to German, this will be what apears when you have option C on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🇪🇸') {
+					addOptionC('Spanish', message.author.id);
+					successEmbed.setDescription('I set your option C to Spanish, this will be what apears when you have option C on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🥘') {
+					addOptionC('Food Tech', message.author.id);
+					successEmbed.setDescription('I set your option C to Food Tech, this will be what apears when you have option C on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🥳') {
+					addOptionC('Free Lesson', message.author.id);
+					successEmbed.setDescription('I set your option C to Free Lesson, this will be what apears when you have option C on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+			})
+			.catch(async () => {
+				msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
+				await msg.delete();
+			});
 	}
-	function optionD() {
+	async function optionD() {
 		const msg = await message.channel.send(optionDEmbed);
-			await msg.react('🎨');
-			await msg.react('🤝');
-			await msg.react('🖥️');
-			await msg.react('🌍');
-			await msg.react('📰');
-			await msg.react('🙏');
-			await msg.react('🥳');
-			msg.awaitReactions(optionDFilter, { max: 1, time: 600000, errors: ['time'] })
-				.then(collected => {
-					successEmbed.setTitle('Success: Added Option D');
-					const reaction = collected.first();
-					setSetup(message.author.id);
-					if (reaction.emoji.name === '🎨') {
-						addOptionD('Art', message.author.id);
-						successEmbed.setDescription('I set your option D to Art, this will be what apears when you have option D on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🤝') {
-						addOptionD('Study Support', message.author.id);
-						successEmbed.setDescription('I set your option D to Study Support, this will be what apears when you have option D on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🖥️') {
-						addOptionD('Computing', message.author.id);
-						successEmbed.setDescription('I set your option D to Computing, this will be what apears when you have option D on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🌍') {
-						addOptionD('Geography', message.author.id);
-						successEmbed.setDescription('I set your option D to Geography, this will be what apears when you have option D on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '📰') {
-						addOptionD('Media', message.author.id);
-						successEmbed.setDescription('I set your option D to Media, this will be what apears when you have option D on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🙏') {
-						addOptionD('RE', message.author.id);
-						successEmbed.setDescription('I set your option D to RE, this will be what apears when you have option D on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-					else if(reaction.emoji.name === '🥳') {
-						addOptionD('Free Lesson', message.author.id);
-						successEmbed.setDescription('I set your option D to Free Lesson, this will be what apears when you have option D on your timetable.');
-						msg.channel.send(successEmbed);
-					}
-				})
-				.catch(async error => {
-					console.log(error);
-					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
-					await msg.delete();
-				});
+		await msg.react('🎨');
+		await msg.react('🤝');
+		await msg.react('🖥️');
+		await msg.react('🌍');
+		await msg.react('📰');
+		await msg.react('🙏');
+		await msg.react('🥳');
+		msg.awaitReactions(optionDFilter, { max: 1, time: 600000, errors: ['time'] })
+			.then(collected => {
+				successEmbed.setTitle('Success: Added Option D');
+				const reaction = collected.first();
+				setSetup(message.author.id);
+				if (reaction.emoji.name === '🎨') {
+					addOptionD('Art', message.author.id);
+					successEmbed.setDescription('I set your option D to Art, this will be what apears when you have option D on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🤝') {
+					addOptionD('Study Support', message.author.id);
+					successEmbed.setDescription('I set your option D to Study Support, this will be what apears when you have option D on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🖥️') {
+					addOptionD('Computing', message.author.id);
+					successEmbed.setDescription('I set your option D to Computing, this will be what apears when you have option D on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🌍') {
+					addOptionD('Geography', message.author.id);
+					successEmbed.setDescription('I set your option D to Geography, this will be what apears when you have option D on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '📰') {
+					addOptionD('Media', message.author.id);
+					successEmbed.setDescription('I set your option D to Media, this will be what apears when you have option D on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🙏') {
+					addOptionD('RE', message.author.id);
+					successEmbed.setDescription('I set your option D to RE, this will be what apears when you have option D on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+				else if(reaction.emoji.name === '🥳') {
+					addOptionD('Free Lesson', message.author.id);
+					successEmbed.setDescription('I set your option D to Free Lesson, this will be what apears when you have option D on your timetable.');
+					msg.channel.send(successEmbed);
+				}
+			})
+			.catch(async error => {
+				console.log(error);
+				msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
+				await msg.delete();
+			});
 	}
 	if (message.author.bot) return;
 	if (!message.author.bot && message.channel.type === 'dm') {
@@ -433,7 +433,7 @@ module.exports = async (client, message) => {
 						successEmbed.setDescription('I have added you to the teaching group of 11(5).');
 						msg.channel.send(successEmbed);
 					}
-					optionA()
+					optionA();
 				})
 				.catch(async () => {
 					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
@@ -441,16 +441,16 @@ module.exports = async (client, message) => {
 				});
 		}
 		else if (member.optionA == null) {
-			optionA()
+			optionA();
 		}
 		else if (member.optionB == null) {
-			optionB()
+			optionB();
 		}
 		else if (member.optionC == null) {
-			optionC()
+			optionC();
 		}
 		else if (member.optionD == null) {
-			optionD()
+			optionD();
 		}
 	}
 	else if (!message.author.bot && message.channel.type === 'text') {
