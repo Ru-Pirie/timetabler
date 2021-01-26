@@ -80,123 +80,8 @@ module.exports = async (client, message) => {
 	const optionDFilter = (reaction, user) => {
 		return ['🎨', '🤝', '🖥️', '🌍', '📰', '🙏', '🥳'].includes(reaction.emoji.name) && user.id === message.author.id;
 	};
-	if (message.author.bot) return;
-	if (!message.author.bot && message.channel.type === 'dm') {
-		log('DM', `${message.author.tag} ↪ ${client.user.tag}: ${message.content}`);
-		if (message.content === 'reset') {
-			await removeMember(message.author.id);
-			addMember(message.author.id);
-		}
-		if (getSetup(message.author.id)) {
-			if (message.content.includes('timetable')) {
-				message.react('👀');
-				const timetableEmbed = new Discord.MessageEmbed()
-					.setColor('#00bbff')
-					.setTitle(`Your Timetable for Today (${member.teachinggroup})`)
-					.setThumbnail(get('image'))
-					.setTimestamp()
-					.setFooter(client.user.username, client.user.displayAvatarURL())
-				if (day === 'Mon') {
-					const timetable = getMonday(member.teachinggroup);
-					const periodone = timetable.periodone.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodtwo = timetable.periodtwo.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodthree = timetable.periodthree.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodfour = timetable.periodfour.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodfive = timetable.periodfive.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodsix = timetable.periodsix.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					timetableEmbed.addField('Lessons:', `8:40 - 9:30:ㅤㅤㅤㅤ**${periodone}**\n9:30 - 10:20:ㅤ  ㅤ  ㅤ**${periodtwo}**\n10:20 - 10:40:ㅤㅤㅤ**Breaktime**\n10:40 - 11:30:ㅤㅤㅤ**${periodthree}**\n11:30 - 12:20:ㅤㅤㅤ**${periodfour}**\n12:20 - 1:15:ㅤㅤㅤㅤ**Lunch**\n1:15 - 2:05:ㅤㅤㅤㅤ**${periodfive}**\n2:05 - 2:55:ㅤㅤㅤㅤ**${periodsix}**`)
-					message.channel.send(timetableEmbed)
-				}
-				else if (day === 'Tue') {
-					const timetable = getTuesday(member.teachinggroup);
-					const periodone = timetable.periodone.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodtwo = timetable.periodtwo.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodthree = timetable.periodthree.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodfour = timetable.periodfour.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodfive = timetable.periodfive.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodsix = timetable.periodsix.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					timetableEmbed.addField('Lessons:', `8:40 - 9:30:ㅤㅤㅤㅤ**${periodone}**\n9:30 - 10:20:ㅤ  ㅤ  ㅤ**${periodtwo}**\n10:20 - 10:40:ㅤㅤㅤ**Breaktime**\n10:40 - 11:30:ㅤㅤㅤ**${periodthree}**\n11:30 - 12:20:ㅤㅤㅤ**${periodfour}**\n12:20 - 1:15:ㅤㅤㅤㅤ**Lunch**\n1:15 - 2:05:ㅤㅤㅤㅤ**${periodfive}**\n2:05 - 2:55:ㅤㅤㅤㅤ**${periodsix}**`)
-					message.channel.send(timetableEmbed)
-				}
-				else if (day === 'Wed') {
-					const timetable = getWednesday(member.teachinggroup);
-					const periodone = timetable.periodone.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodtwo = timetable.periodtwo.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodthree = timetable.periodthree.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodfour = timetable.periodfour.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodfive = timetable.periodfive.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodsix = timetable.periodsix.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					timetableEmbed.addField('Lessons:', `8:40 - 9:30:ㅤㅤㅤㅤ**${periodone}**\n9:30 - 10:20:ㅤ  ㅤ  ㅤ**${periodtwo}**\n10:20 - 10:40:ㅤㅤㅤ**Breaktime**\n10:40 - 11:30:ㅤㅤㅤ**${periodthree}**\n11:30 - 12:20:ㅤㅤㅤ**${periodfour}**\n12:20 - 1:15:ㅤㅤㅤㅤ**Lunch**\n1:15 - 2:05:ㅤㅤㅤㅤ**${periodfive}**\n2:05 - 2:55:ㅤㅤㅤㅤ**${periodsix}**`)
-					message.channel.send(timetableEmbed)
-				}
-				else if (day === 'Thu') {
-					const timetable = getThursday(member.teachinggroup);
-					const periodone = timetable.periodone.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodtwo = timetable.periodtwo.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodthree = timetable.periodthree.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodfour = timetable.periodfour.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodfive = timetable.periodfive.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodsix = timetable.periodsix.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					timetableEmbed.addField('Lessons:', `8:40 - 9:30:ㅤㅤㅤㅤ**${periodone}**\n9:30 - 10:20:ㅤ  ㅤ  ㅤ**${periodtwo}**\n10:20 - 10:40:ㅤㅤㅤ**Breaktime**\n10:40 - 11:30:ㅤㅤㅤ**${periodthree}**\n11:30 - 12:20:ㅤㅤㅤ**${periodfour}**\n12:20 - 1:15:ㅤㅤㅤㅤ**Lunch**\n1:15 - 2:05:ㅤㅤㅤㅤ**${periodfive}**\n2:05 - 2:55:ㅤㅤㅤㅤ**${periodsix}**`)
-					message.channel.send(timetableEmbed)
-				}
-				else if (day === 'Fri') {
-					const timetable = getFriday(member.teachinggroup);
-					const periodone = timetable.periodone.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodtwo = timetable.periodtwo.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodthree = timetable.periodthree.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodfour = timetable.periodfour.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodfive = timetable.periodfive.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					const periodsix = timetable.periodsix.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
-					timetableEmbed.addField('Lessons:', `8:40 - 9:30:ㅤㅤㅤㅤ**${periodone}**\n9:30 - 10:20:ㅤ  ㅤ  ㅤ**${periodtwo}**\n10:20 - 10:40:ㅤㅤㅤ**Breaktime**\n10:40 - 11:30:ㅤㅤㅤ**${periodthree}**\n11:30 - 12:20:ㅤㅤㅤ**${periodfour}**\n12:20 - 1:15:ㅤㅤㅤㅤ**Lunch**\n1:15 - 2:05:ㅤㅤㅤㅤ**${periodfive}**\n2:05 - 2:55:ㅤㅤㅤㅤ**${periodsix}**`)
-					message.channel.send(timetableEmbed)
-				}
-			}
-		}
-		else if (member.teachinggroup == null) {
-			const msg = await message.channel.send(groupEmbed);
-			await msg.react('1️⃣');
-			await msg.react('2️⃣');
-			await msg.react('3️⃣');
-			await msg.react('4️⃣');
-			await msg.react('5️⃣');
-			msg.awaitReactions(groupFilter, { max: 1, time: 600000, errors: ['time'] })
-				.then(collected => {
-					successEmbed.setTitle('Success: Added Teaching Group');
-					const reaction = collected.first();
-					if (reaction.emoji.name === '1️⃣') {
-						addGroup('11(1)', message.author.id);
-						successEmbed.setDescription('I have added you to the teaching group of 11(1).');
-						msg.channel.send(successEmbed);
-					}
-					else if (reaction.emoji.name === '2️⃣') {
-						addGroup('11(2)', message.author.id);
-						successEmbed.setDescription('I have added you to the teaching group of 11(2).');
-						msg.channel.send(successEmbed);
-					}
-					else if (reaction.emoji.name === '3️⃣') {
-						addGroup('11(3)', message.author.id);
-						successEmbed.setDescription('I have added you to the teaching group of 11(3).');
-						msg.channel.send(successEmbed);
-					}
-					else if (reaction.emoji.name === '4️⃣') {
-						addGroup('11(4)', message.author.id);
-						successEmbed.setDescription('I have added you to the teaching group of 11(4).');
-						msg.channel.send(successEmbed);
-					}
-					else if (reaction.emoji.name === '5️⃣') {
-						addGroup('11(5)', message.author.id);
-						successEmbed.setDescription('I have added you to the teaching group of 11(5).');
-						msg.channel.send(successEmbed);
-					}
-				})
-				.catch(async () => {
-					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
-					await msg.delete();
-				});
-		}
-		else if (member.optionA == null) {
-			const msg = await message.channel.send(optionAEmbed);
+	function optionA() {
+		const msg = await message.channel.send(optionAEmbed);
 			await msg.react('🏛️');
 			await msg.react('👨‍💼');
 			await msg.react('🌍');
@@ -260,9 +145,9 @@ module.exports = async (client, message) => {
 					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
 					await msg.delete();
 				});
-		}
-		else if (member.optionB == null) {
-			const msg = await message.channel.send(optionBEmbed);
+	}
+	function optionB() {
+		const msg = await message.channel.send(optionBEmbed);
 			await msg.react('🚸');
 			await msg.react('🇲🇫');
 			await msg.react('🤝');
@@ -326,9 +211,9 @@ module.exports = async (client, message) => {
 					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
 					await msg.delete();
 				});
-		}
-		else if (member.optionC == null) {
-			const msg = await message.channel.send(optionCEmbed);
+	}
+	function optionC() {
+		const msg = await message.channel.send(optionCEmbed);
 			await msg.react('🖥️');
 			await msg.react('🏛️');
 			await msg.react('🌍');
@@ -380,9 +265,9 @@ module.exports = async (client, message) => {
 					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
 					await msg.delete();
 				});
-		}
-		else if (member.optionD == null) {
-			const msg = await message.channel.send(optionDEmbed);
+	}
+	function optionD() {
+		const msg = await message.channel.send(optionDEmbed);
 			await msg.react('🎨');
 			await msg.react('🤝');
 			await msg.react('🖥️');
@@ -436,8 +321,134 @@ module.exports = async (client, message) => {
 					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
 					await msg.delete();
 				});
+	}
+	if (message.author.bot) return;
+	if (!message.author.bot && message.channel.type === 'dm') {
+		log('DM', `${message.author.tag} ↪ ${client.user.tag}: ${message.content}`);
+		if (message.content === 'reset') {
+			await removeMember(message.author.id);
+			addMember(message.author.id);
 		}
-
+		if (getSetup(message.author.id)) {
+			if (message.content.includes('timetable')) {
+				message.react('👀');
+				const timetableEmbed = new Discord.MessageEmbed()
+					.setColor('#00bbff')
+					.setTitle(`Your Timetable for Today (${member.teachinggroup})`)
+					.setThumbnail(get('image'))
+					.setTimestamp()
+					.setFooter(client.user.username, client.user.displayAvatarURL());
+				if (day === 'Mon') {
+					const timetable = getMonday(member.teachinggroup);
+					const periodone = timetable.periodone.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodtwo = timetable.periodtwo.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodthree = timetable.periodthree.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodfour = timetable.periodfour.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodfive = timetable.periodfive.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodsix = timetable.periodsix.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					timetableEmbed.addField('Lessons:', `8:40 - 9:30:ㅤㅤㅤㅤ**${periodone}**\n9:30 - 10:20:ㅤ  ㅤ  ㅤ**${periodtwo}**\n10:20 - 10:40:ㅤㅤㅤ**Breaktime**\n10:40 - 11:30:ㅤㅤㅤ**${periodthree}**\n11:30 - 12:20:ㅤㅤㅤ**${periodfour}**\n12:20 - 1:15:ㅤㅤㅤㅤ**Lunch**\n1:15 - 2:05:ㅤㅤㅤㅤ**${periodfive}**\n2:05 - 2:55:ㅤㅤㅤㅤ**${periodsix}**`);
+					message.channel.send(timetableEmbed);
+				}
+				else if (day === 'Tue') {
+					const timetable = getTuesday(member.teachinggroup);
+					const periodone = timetable.periodone.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodtwo = timetable.periodtwo.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodthree = timetable.periodthree.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodfour = timetable.periodfour.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodfive = timetable.periodfive.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodsix = timetable.periodsix.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					timetableEmbed.addField('Lessons:', `8:40 - 9:30:ㅤㅤㅤㅤ**${periodone}**\n9:30 - 10:20:ㅤ  ㅤ  ㅤ**${periodtwo}**\n10:20 - 10:40:ㅤㅤㅤ**Breaktime**\n10:40 - 11:30:ㅤㅤㅤ**${periodthree}**\n11:30 - 12:20:ㅤㅤㅤ**${periodfour}**\n12:20 - 1:15:ㅤㅤㅤㅤ**Lunch**\n1:15 - 2:05:ㅤㅤㅤㅤ**${periodfive}**\n2:05 - 2:55:ㅤㅤㅤㅤ**${periodsix}**`);
+					message.channel.send(timetableEmbed);
+				}
+				else if (day === 'Wed') {
+					const timetable = getWednesday(member.teachinggroup);
+					const periodone = timetable.periodone.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodtwo = timetable.periodtwo.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodthree = timetable.periodthree.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodfour = timetable.periodfour.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodfive = timetable.periodfive.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodsix = timetable.periodsix.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					timetableEmbed.addField('Lessons:', `8:40 - 9:30:ㅤㅤㅤㅤ**${periodone}**\n9:30 - 10:20:ㅤ  ㅤ  ㅤ**${periodtwo}**\n10:20 - 10:40:ㅤㅤㅤ**Breaktime**\n10:40 - 11:30:ㅤㅤㅤ**${periodthree}**\n11:30 - 12:20:ㅤㅤㅤ**${periodfour}**\n12:20 - 1:15:ㅤㅤㅤㅤ**Lunch**\n1:15 - 2:05:ㅤㅤㅤㅤ**${periodfive}**\n2:05 - 2:55:ㅤㅤㅤㅤ**${periodsix}**`);
+					message.channel.send(timetableEmbed);
+				}
+				else if (day === 'Thu') {
+					const timetable = getThursday(member.teachinggroup);
+					const periodone = timetable.periodone.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodtwo = timetable.periodtwo.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodthree = timetable.periodthree.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodfour = timetable.periodfour.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodfive = timetable.periodfive.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodsix = timetable.periodsix.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					timetableEmbed.addField('Lessons:', `8:40 - 9:30:ㅤㅤㅤㅤ**${periodone}**\n9:30 - 10:20:ㅤ  ㅤ  ㅤ**${periodtwo}**\n10:20 - 10:40:ㅤㅤㅤ**Breaktime**\n10:40 - 11:30:ㅤㅤㅤ**${periodthree}**\n11:30 - 12:20:ㅤㅤㅤ**${periodfour}**\n12:20 - 1:15:ㅤㅤㅤㅤ**Lunch**\n1:15 - 2:05:ㅤㅤㅤㅤ**${periodfive}**\n2:05 - 2:55:ㅤㅤㅤㅤ**${periodsix}**`);
+					message.channel.send(timetableEmbed);
+				}
+				else if (day === 'Fri') {
+					const timetable = getFriday(member.teachinggroup);
+					const periodone = timetable.periodone.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodtwo = timetable.periodtwo.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodthree = timetable.periodthree.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodfour = timetable.periodfour.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodfive = timetable.periodfive.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					const periodsix = timetable.periodsix.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
+					timetableEmbed.addField('Lessons:', `8:40 - 9:30:ㅤㅤㅤㅤ**${periodone}**\n9:30 - 10:20:ㅤ  ㅤ  ㅤ**${periodtwo}**\n10:20 - 10:40:ㅤㅤㅤ**Breaktime**\n10:40 - 11:30:ㅤㅤㅤ**${periodthree}**\n11:30 - 12:20:ㅤㅤㅤ**${periodfour}**\n12:20 - 1:15:ㅤㅤㅤㅤ**Lunch**\n1:15 - 2:05:ㅤㅤㅤㅤ**${periodfive}**\n2:05 - 2:55:ㅤㅤㅤㅤ**${periodsix}**`);
+					message.channel.send(timetableEmbed);
+				}
+			}
+		}
+		else if (member.teachinggroup == null) {
+			const msg = await message.channel.send(groupEmbed);
+			await msg.react('1️⃣');
+			await msg.react('2️⃣');
+			await msg.react('3️⃣');
+			await msg.react('4️⃣');
+			await msg.react('5️⃣');
+			msg.awaitReactions(groupFilter, { max: 1, time: 600000, errors: ['time'] })
+				.then(collected => {
+					successEmbed.setTitle('Success: Added Teaching Group');
+					const reaction = collected.first();
+					if (reaction.emoji.name === '1️⃣') {
+						addGroup('11(1)', message.author.id);
+						successEmbed.setDescription('I have added you to the teaching group of 11(1).');
+						msg.channel.send(successEmbed);
+					}
+					else if (reaction.emoji.name === '2️⃣') {
+						addGroup('11(2)', message.author.id);
+						successEmbed.setDescription('I have added you to the teaching group of 11(2).');
+						msg.channel.send(successEmbed);
+					}
+					else if (reaction.emoji.name === '3️⃣') {
+						addGroup('11(3)', message.author.id);
+						successEmbed.setDescription('I have added you to the teaching group of 11(3).');
+						msg.channel.send(successEmbed);
+					}
+					else if (reaction.emoji.name === '4️⃣') {
+						addGroup('11(4)', message.author.id);
+						successEmbed.setDescription('I have added you to the teaching group of 11(4).');
+						msg.channel.send(successEmbed);
+					}
+					else if (reaction.emoji.name === '5️⃣') {
+						addGroup('11(5)', message.author.id);
+						successEmbed.setDescription('I have added you to the teaching group of 11(5).');
+						msg.channel.send(successEmbed);
+					}
+				})
+				.catch(async () => {
+					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
+					await msg.delete();
+				});
+		}
+		else if (member.optionA == null) {
+			optionA()
+		}
+		else if (member.optionB == null) {
+			optionB()
+		}
+		else if (member.optionC == null) {
+			optionC()
+		}
+		else if (member.optionD == null) {
+			optionD()
+		}
 	}
 	else if (!message.author.bot && message.channel.type === 'text') {
 		const messageArray = message.content.split(/ +/);
