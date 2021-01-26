@@ -3,7 +3,7 @@ module.exports = {
 	prefix: '/',
 	version: '1.0.0',
 	client: {
-		token: 'not-for-you-eyes',
+		token: 'nope nope nope',
 	},
 	embed: {
 		image: 'https://icons-for-free.com/iconfiles/png/512/clock+galaxy+mobile+schedule+time+timetable+icon-1320183046319691941.png',
