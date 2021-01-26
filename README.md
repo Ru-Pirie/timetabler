@@ -2,6 +2,10 @@
 
 **Timetabeler** is a basic discord bot which I made in just under one day so dont expect any of the code to be neat. It is designed to help my and some friends out with all of the crazyness arround online learning, it essential is a node-cron schedular which will notify you  when your next lesson is arround one minuete in advance.
 
+## What it does...
+
+All this program does is send you a reminder every time a lesson starts and what it is. Hopefully this allows you to more easily find the lessons and work out what your next lesson is. 
+
 ## Overview
 
 **FYI:** I will not be providing any LTS to this project it is just a quick fix to amke my life and some other peoples lives easier. However if for some reason you want to run it and give it a go I will provide some briefe instructions on how to run the program.
