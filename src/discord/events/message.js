@@ -262,6 +262,7 @@ module.exports = async (client, message) => {
 					successEmbed.setDescription('I set your option C to Free Lesson, this will be what apears when you have option C on your timetable.');
 					msg.channel.send(successEmbed);
 				}
+				optionD()
 			})
 			.catch(async () => {
 				msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
