@@ -1,5 +1,6 @@
 const { get } = require('../../../../config');
-const { addMember } =require('../../../database')
+const { addMember } = require('../../../util/database');
+
 module.exports = {
 	name: 'say',
 	description: 'say',
