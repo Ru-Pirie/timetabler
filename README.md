@@ -11,7 +11,7 @@
  > token:  'your-token-here',
  3. Once your bot token is in place make sure that you have node installed, if you dont you can find an installer [here](https://nodejs.org/en/download/package-manager/).
  4. Once you have all that installed run
- > npm i dateformat discord.js better-sqlite3
+ > npm i dateformat discord.js better-sqlite3 node-cron
 5. Then all you should have to do is ``node .``
 
 And yea thats about it any other questions email me :D
