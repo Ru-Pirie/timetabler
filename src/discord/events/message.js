@@ -140,6 +140,7 @@ module.exports = async (client, message) => {
 						successEmbed.setDescription('I set your option A to Free Lesson, this will be what apears when you have option A on your timetable.');
 						msg.channel.send(successEmbed);
 					}
+					optionB()
 				})
 				.catch(async () => {
 					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
@@ -206,6 +207,7 @@ module.exports = async (client, message) => {
 						successEmbed.setDescription('I set your option B to Free Lesson, this will be what apears when you have option B on your timetable.');
 						msg.channel.send(successEmbed);
 					}
+					optionC()
 				})
 				.catch(async () => {
 					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
@@ -431,6 +433,7 @@ module.exports = async (client, message) => {
 						successEmbed.setDescription('I have added you to the teaching group of 11(5).');
 						msg.channel.send(successEmbed);
 					}
+					optionA()
 				})
 				.catch(async () => {
 					msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
