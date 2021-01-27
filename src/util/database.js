@@ -168,4 +168,8 @@ module.exports = {
 		const usersArray = getSTMT.all();
 		return usersArray;
 	},
+	addTimetable: function(a, b, c, d, e, f, g) {
+		const addSTMT = db.prepare('INSERT INTO FRIDAY (teachinggroup, periodone, periodtwo, periodthree, periodfour, periodfive, periodsix)VALUES (?,?,?,?,?,?,?)');
+		addSTMT.run(a, b, c, d, e, f, g);
+	},
 };

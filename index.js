@@ -8,7 +8,6 @@ const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 const fs = require('fs');
 const dateFormat = require('dateformat');
 
-const day = dateFormat(new Date(), 'ddd');
 const short = dateFormat(new Date(), 'dd-mm-yyyy');
 fs.appendFileSync(`./src/logs/${short}.txt`, '----------------------------NEW INSTANCE----------------------------\n');
 
@@ -48,9 +47,11 @@ client.login(get('token')).then(async () => {
 		.setTimestamp()
 		.setFooter(client.user.username, client.user.displayAvatarURL());
 	cron.schedule('39 8 * * 1-5', () => {
+		const day = dateFormat(new Date(), 'ddd');
 		periodEmbed.addField('Time:', '8:40 - 9:30', true);
 		if (day === 'Mon') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getMonday(member.teachinggroup).periodone;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -62,6 +63,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Tue') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getTuesday(member.teachinggroup).periodone;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -73,6 +75,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Wed') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getWednesday(member.teachinggroup).periodone;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -84,6 +87,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Thu') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getThursday(member.teachinggroup).periodone;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -95,6 +99,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Fri') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getFriday(member.teachinggroup).periodone;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -109,9 +114,11 @@ client.login(get('token')).then(async () => {
 		timezone: 'Europe/London',
 	});
 	cron.schedule('29 9 * * 1-5', () => {
+		const day = dateFormat(new Date(), 'ddd');
 		periodEmbed.addField('Time:', '9:30 - 10:20', true);
 		if (day === 'Mon') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getMonday(member.teachinggroup).periodtwo;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -123,6 +130,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Tue') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getTuesday(member.teachinggroup).periodtwo;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -134,6 +142,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Wed') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getWednesday(member.teachinggroup).periodtwo;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -145,6 +154,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Thu') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getThursday(member.teachinggroup).periodtwo;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -156,6 +166,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Fri') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getFriday(member.teachinggroup).periodtwo;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -176,9 +187,11 @@ client.login(get('token')).then(async () => {
 		timezone: 'Europe/London',
 	});
 	cron.schedule('39 10 * * 1-5', () => {
+		const day = dateFormat(new Date(), 'ddd');
 		periodEmbed.addField('Time:', '10:40 - 11:30', true);
 		if (day === 'Mon') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getMonday(member.teachinggroup).periodthree;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -190,6 +203,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Tue') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getTuesday(member.teachinggroup).periodthree;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -201,6 +215,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Wed') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getWednesday(member.teachinggroup).periodthree;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -212,6 +227,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Thu') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getThursday(member.teachinggroup).periodthree;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -223,6 +239,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Fri') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getFriday(member.teachinggroup).periodthree;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -237,9 +254,11 @@ client.login(get('token')).then(async () => {
 		timezone: 'Europe/London',
 	});
 	cron.schedule('29 11 * * 1-5', () => {
+		const day = dateFormat(new Date(), 'ddd');
 		periodEmbed.addField('Time:', '11:30 - 12:20', true);
 		if (day === 'Mon') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getMonday(member.teachinggroup).periodfour;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -251,6 +270,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Tue') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getTuesday(member.teachinggroup).periodfour;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -262,6 +282,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Wed') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getWednesday(member.teachinggroup).periodfour;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -273,6 +294,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Thu') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getThursday(member.teachinggroup).periodfour;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -284,6 +306,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Fri') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getFriday(member.teachinggroup).periodfour;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -298,15 +321,18 @@ client.login(get('token')).then(async () => {
 		timezone: 'Europe/London',
 	});
 	cron.schedule('19 12 * * 1-5', () => {
+		const day = dateFormat(new Date(), 'ddd');
 		console.log('lunch');
 	}, {
 		scheduled: true,
 		timezone: 'Europe/London',
 	});
 	cron.schedule('14 13 * * 1-5', () => {
+		const day = dateFormat(new Date(), 'ddd');
 		periodEmbed.addField('Time:', '1:15 - 2:05', true);
 		if (day === 'Mon') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getMonday(member.teachinggroup).periodfive;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -318,6 +344,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Tue') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getTuesday(member.teachinggroup).periodfive;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -329,6 +356,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Wed') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getWednesday(member.teachinggroup).periodfive;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -340,6 +368,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Thu') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getThursday(member.teachinggroup).periodfive;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -351,6 +380,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Fri') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getFriday(member.teachinggroup).periodfive;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -365,9 +395,11 @@ client.login(get('token')).then(async () => {
 		timezone: 'Europe/London',
 	});
 	cron.schedule('4 14 * * 1-5', () => {
+		const day = dateFormat(new Date(), 'ddd');
 		periodEmbed.addField('Time:', '14:05 - 15:00', true);
 		if (day === 'Mon') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getMonday(member.teachinggroup).periodsix;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -379,6 +411,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Tue') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getTuesday(member.teachinggroup).periodsix;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -390,6 +423,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Wed') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getWednesday(member.teachinggroup).periodsix;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -401,6 +435,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Thu') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getThursday(member.teachinggroup).periodsix;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -412,6 +447,7 @@ client.login(get('token')).then(async () => {
 		}
 		else if (day === 'Fri') {
 			getMembers().forEach(member => {
+				if (member.setup === 0) return;
 				const timetable = getFriday(member.teachinggroup).periodsix;
 				const period = timetable.replace('opta', member.optionA).replace('optb', member.optionB).replace('optc', member.optionC).replace('optd', member.optionD);
 				periodEmbed.setDescription(`Time for your next lesson! Your next lesson is ${period}, bear in mind that your meeting may not have started yet however it should be up soon!`);
@@ -426,6 +462,7 @@ client.login(get('token')).then(async () => {
 		timezone: 'Europe/London',
 	});
 	cron.schedule('59 14 * * 1-5', () => {
+		const day = dateFormat(new Date(), 'ddd');
 		console.log('End Of Day');
 	}, {
 		scheduled: true,

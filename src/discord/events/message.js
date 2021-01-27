@@ -262,7 +262,7 @@ module.exports = async (client, message) => {
 					successEmbed.setDescription('I set your option C to Free Lesson, this will be what apears when you have option C on your timetable.');
 					msg.channel.send(successEmbed);
 				}
-				optionD()
+				optionD();
 			})
 			.catch(async () => {
 				msg.channel.send(timedEmbed).then(embed => embed.delete({ timeout: 600000 }));
@@ -328,12 +328,12 @@ module.exports = async (client, message) => {
 	if (message.author.bot) return;
 	if (!message.author.bot && message.channel.type === 'dm') {
 		log('DM', `${message.author.tag} ↪ ${client.user.tag}: ${message.content}`);
-		if (message.content === 'reset') {
+		if (message.content.toLowerCase() === 'reset') {
 			await removeMember(message.author.id);
 			addMember(message.author.id);
 		}
 		if (getSetup(message.author.id)) {
-			if (message.content.includes('timetable')) {
+			if (message.content.toLowerCase().includes('timetable')) {
 				message.react('👀');
 				const timetableEmbed = new Discord.MessageEmbed()
 					.setColor('#00bbff')

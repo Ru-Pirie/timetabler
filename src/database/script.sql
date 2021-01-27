@@ -16,7 +16,8 @@ CREATE TABLE IF NOT EXISTS 'MONDAY' (
     periodfour VARCHAR NOT NULL,
     periodfive VARCHAR NOT NULL,
     periodsix VARCHAR NOT NULL,
-    special VARCHAR
+    special VARCHAR,
+    current DECIMAL
 );
 
 CREATE TABLE IF NOT EXISTS 'TUESDAY' (
@@ -27,7 +28,8 @@ CREATE TABLE IF NOT EXISTS 'TUESDAY' (
     periodfour VARCHAR NOT NULL,
     periodfive VARCHAR NOT NULL,
     periodsix VARCHAR NOT NULL,
-    special VARCHAR
+    special VARCHAR,
+    current DECIMAL
 );
 
 CREATE TABLE IF NOT EXISTS 'WEDNESDAY' (
@@ -38,7 +40,8 @@ CREATE TABLE IF NOT EXISTS 'WEDNESDAY' (
     periodfour VARCHAR NOT NULL,
     periodfive VARCHAR NOT NULL,
     periodsix VARCHAR NOT NULL,
-    special VARCHAR
+    special VARCHAR,
+    current DECIMAL
 );
 
 CREATE TABLE IF NOT EXISTS 'THURSDAY' (
@@ -49,7 +52,8 @@ CREATE TABLE IF NOT EXISTS 'THURSDAY' (
     periodfour VARCHAR NOT NULL,
     periodfive VARCHAR NOT NULL,
     periodsix VARCHAR NOT NULL,
-    special VARCHAR
+    special VARCHAR,
+    current DECIMAL
 );
 
 CREATE TABLE IF NOT EXISTS 'FRIDAY' (
@@ -60,5 +64,6 @@ CREATE TABLE IF NOT EXISTS 'FRIDAY' (
     periodfour VARCHAR NOT NULL,
     periodfive VARCHAR NOT NULL,
     periodsix VARCHAR NOT NULL,
-    special VARCHAR
+    special VARCHAR,
+    current DECIMAL
 );

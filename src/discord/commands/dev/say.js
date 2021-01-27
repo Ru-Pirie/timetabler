@@ -1,5 +1,5 @@
 const { get } = require('../../../../config');
-const { addMember } = require('../../../util/database');
+const { addMember, getMembers, getWednesday } = require('../../../util/database');
 
 module.exports = {
 	name: 'say',
@@ -15,8 +15,10 @@ module.exports = {
 		args: 1,
 	},
 	async execute(client, message, args) {
-		client.guilds.cache.get('803662570882859090').members.cache.forEach(element => {
-			addMember(element.id)
+		getMembers().forEach(member => {
+			if (member.setup === 0) return;
+			const day = getWednesday(member.teachinggroup);
+			console.log(day.periodone);
 		});
 		// await message.delete();
 		// await message.channel.send(args.join(' '));
