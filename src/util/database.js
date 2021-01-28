@@ -144,7 +144,7 @@ module.exports = {
      * @param {string} teachinggroup The teaching group timetable you wish to fetch
     **/
 	getThursday: function(teachinggroup) {
-		const getSTMT = db.prepare('SELECT * FROM THRUSDAY WHERE teachinggroup = ?');
+		const getSTMT = db.prepare('SELECT * FROM THURSDAY WHERE teachinggroup = ?');
 		const timetableObj = getSTMT.get(teachinggroup);
 		return timetableObj;
 	},

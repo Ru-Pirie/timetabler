@@ -4,7 +4,6 @@ const { infoEmbed } = require('../../util/embeds.js');
 const { getMember, getSetup, addGroup, addOptionA, addOptionB, addOptionC, addOptionD, setSetup, removeMember, addMember, getMonday, getThursday, getTuesday, getWednesday, getFriday } = require('../../util/database');
 const Discord = require('discord.js');
 const dateFormat = require('dateformat');
-const day = dateFormat(new Date(), 'ddd');
 
 module.exports = async (client, message) => {
 	const member = getMember(message.author.id);
@@ -334,6 +333,7 @@ module.exports = async (client, message) => {
 		}
 		if (getSetup(message.author.id)) {
 			if (message.content.toLowerCase().includes('timetable')) {
+				const day = dateFormat(new Date(), 'ddd');
 				message.react('👀');
 				const timetableEmbed = new Discord.MessageEmbed()
 					.setColor('#00bbff')
